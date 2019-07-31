@@ -1,0 +1,32 @@
+﻿<Window x:Class="MyToastNotification.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyToastNotification"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="ToastMessages" Height="200" Width="700">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="auto"/>                           
+        </Grid.RowDefinitions>
+        <TextBox Background="Transparent" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Foreground="Blue" FontSize="15" AcceptsReturn="True" Margin="5,5,5,5"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="5">
+            <Button  Width="120" Height="25" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding SendSuccessCommand}"
+                     Content="Send-Succes"/>
+             <Button  Width="120" Height="25" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding SendWarningCommand}"
+                     Content="Send-Warning"/>
+             <Button  Width="120" Height="25" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding SendErrorCommand}"
+                     Content="Send-Error"/>
+             <Button  Width="120" Height="25" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding SendInfoCommand}"
+                     Content="Send-Info"/>
+             <Button  Width="120" Height="25" HorizontalAlignment="Right" Margin="0,0,5,0" Command="{Binding ClearCommand}"
+                     Content="clear"/>
+        </StackPanel>
+    </Grid>
+</Window>
