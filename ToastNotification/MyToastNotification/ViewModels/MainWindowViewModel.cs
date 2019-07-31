@@ -1,6 +1,7 @@
 ﻿
 #region Usings
 
+using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Mvvm;
 using ToastNotification;
@@ -15,10 +16,10 @@ namespace MyToastNotification
 
         public MainWindowViewModel()
         {
-            SendSuccessCommand = new DelegateCommand(() =>  SendMessage(MessageType.Success));
-            SendErrorCommand = new DelegateCommand(() =>  SendMessage(MessageType.Error));
-            SendWarningCommand = new DelegateCommand(() =>  SendMessage(MessageType.Warning));
-            SendInfoCommand = new DelegateCommand(() =>  SendMessage(MessageType.Info));
+            SendSuccessCommand = new DelegateCommand(async () =>  await SendMessage(MessageType.Success));
+            SendErrorCommand = new DelegateCommand(async () =>  await SendMessage(MessageType.Error));
+            SendWarningCommand = new DelegateCommand(async () =>  await SendMessage(MessageType.Warning));
+            SendInfoCommand = new DelegateCommand(async () =>  await SendMessage(MessageType.Info));
             ClearCommand = new DelegateCommand(() => { Text = string.Empty;});
         }
         public string Text { get => _text; set => SetProperty(ref _text, value); }
@@ -33,9 +34,9 @@ namespace MyToastNotification
 
         public DelegateCommand ClearCommand { get; set; }
 
-        private void SendMessage(MessageType messageType)
+        private async  Task SendMessage(MessageType messageType)
         {
-          NotificationProvider.Notify(Text, messageType);
+          await NotificationProvider.NotifyAsync(Text, messageType);
         }   
        
     }

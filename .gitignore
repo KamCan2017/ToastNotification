@@ -3,3 +3,7 @@
 ################################################################################
 
 /ToastNotification/.vs/ToastNotification/v16/Server/sqlite3
+/ToastNotification/ToastNotification/obj
+/ToastNotification/ToastNotification/bin
+/ToastNotification/MyToastNotification/obj
+/ToastNotification/MyToastNotification/bin
